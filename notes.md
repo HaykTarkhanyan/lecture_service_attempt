@@ -20,6 +20,13 @@ Useful links:
 2. Footer is now absent (will get fixed once we add title/subtitle to the first slide)
 3. Actions fail (should try from a branch for the main repo)
 
+
+# Furtherreading
+Sometimes the label will get formatted weirdly, e.g. sometimes the CITEKEY will be displayed, when we don't have a year it will display as "n. d." and sometimes "et. al"-s will get lost. 
+Partial solution is to not provide the `author` in the bibtex file, but instead provide a `title`, downside is that the title will be put in quotes. But this way we have full control over the text that is displayed. But the "n. d." will still be there :-(
+
+Note that when the referene is in the frame title it will get displayed as CITEKEY all uppercase
+
 # Importing `lecture_service` files into your repo
 If I'm not mistaken [`lecture_service`](https://github.com/slds-lmu/lecture_service) assumes Linux. At least we need to run a bash file, so if you're using Windows, the easiest way I found was going to Microsoft Store and installing WSL (Windows Subsystem for Linux) with Ubuntu, [download link](https://apps.microsoft.com/detail/9PDXGNCFSCZV?hl=en-us&gl=AM&ocid=pdpshare).
 
