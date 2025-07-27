@@ -1,8 +1,6 @@
-\documentclass[10pt,compress,t,notes=noshow, xcolor=table]{beamer}
+\documentclass[11pt,compress,t,notes=noshow, aspectratio=169, xcolor=table]{beamer}
 
-\input{../../style/preamble}
-\input{../../latex-math/basic-math}
-\input{../../latex-math/basic-ml}
+\usepackage{../../style/lmu-lecture}
 % Defines macros and environments
 \input{../../style/common.tex}
 
@@ -24,18 +22,13 @@
 	
 	% Defines macros and environments
 	
-	\titlemeta{
-PLACEHOLDER
-}{
-LIME Pitfalls
-}{
-figure/lime5
-}{
-
+	\newcommand{\titlefigure}{figure/lime5}
+    \newcommand{\learninggoals}{
     	\item Learn why LIME should be used with caution
-    	\item Possible pitfalls of LIME
-}
-
+    	\item Possible pitfalls of LIME}
+	
+	\lecturechapter{LIME Pitfalls}
+	\lecture{Interpretable Machine Learning}
 	
 	% Prerequisite: le-into, le-lime
 	
@@ -108,7 +101,7 @@ figure/lime5
      \end{columns}
 \end{frame}
 
-\begin{frame}[c]{LIME Pitfall: Locality \furtherreading{Kopper_2019}}
+\begin{frame}[c]{LIME Pitfall: Locality \citebutton{Kopper et al. 2019}{https://slds-lmu.github.io/iml_methods_limitations/}}
     \begin{itemize} 
          \item \textbf{Solution I}: Kernel width strongly interacts with locality:
          \begin{itemize}
@@ -128,7 +121,7 @@ figure/lime5
 
 \end{frame}
 
-\begin{frame}[c]{Pitfall: Local vs. Global Features \furtherreading{Laugel_2018}}
+\begin{frame}[c]{Pitfall: Local vs. Global Features \citebutton{Laugel et al. 2018}{https://arxiv.org/pdf/1806.07498.pdf}}
 
 \begin{itemize}%[<+->]
 	\item<1-> \textbf{Problem}: \\
@@ -145,7 +138,7 @@ figure/lime5
 \end{frame}
 
 
-\begin{frame}{Pitfall: Local vs. Global Features -- Example \furtherreading{Laugel_2018}}
+\begin{frame}{Pitfall: Local vs. Global Features -- Example \citebutton{Laugel et al. 2018}{https://arxiv.org/pdf/1806.07498.pdf}}
 
 \begin{columns}
 	\begin{column}{0.6\textwidth}
@@ -177,7 +170,7 @@ figure/lime5
 %\footnote[frame]{Laugel et al. (2018). Defining Locality for Surrogates in Post-hoc Interpretability. \url{https://arxiv.org/pdf/1806.07498.pdf}.}
 \end{frame}
 
-\begin{frame}{Pitfall: Local vs. Global Features -- Solution \furtherreading{Laugel_2018}}
+\begin{frame}{Pitfall: Local vs. Global Features -- Solution \citebutton{Laugel et al. 2018}{https://arxiv.org/pdf/1806.07498.pdf}}
 \begin{columns}[T, totalwidth=\textwidth]
 	\begin{column}{0.6\textwidth}
 	%\vspace{-.5cm}
@@ -187,18 +180,18 @@ figure/lime5
 		\begin{center}
 		\includegraphics[width=\linewidth]{figure/laugel_method}
 		\scriptsize{\textbf{Example:} $\xv$ (red point), closest point from other class (black cross)}
-	    %{Local surrogate (LS) method by \furtherreading{Laugel_2018}}
+	    %{Local surrogate (LS) method by \citebutton{Laugel et al. 2018}{https://arxiv.org/pdf/1806.07498.pdf}}
 		\end{center}
 		%Sample new instances $\zv$ around the decision boundary closest from point $\xv$ for higher local accuracy
 		\pause
 		\item Red dot (right figure): Closest point from other class
 
-		\item Red line: Local surrogate (LS) method \furtherreading{Laugel_2018}\\
+		\item Red line: Local surrogate (LS) method \citebutton{Laugel et al. 2018}{https://arxiv.org/pdf/1806.07498.pdf}\\
 		$\leadsto$ better approximates the local direction of the decision boundary 
 	\end{itemize}
 % 	\begin{center}
 % 		\includegraphics[width=1\textwidth]{figure/laugel_method}
-% 	    {Local surrogate (LS) method by \furtherreading{Laugel_2018}}
+% 	    {Local surrogate (LS) method by \citebutton{Laugel et al. 2018}{https://arxiv.org/pdf/1806.07498.pdf}}
 % 		\vspace{-0.3cm}
 % 		\end{center}
 \end{column}
@@ -249,7 +242,7 @@ figure/lime5
 
 \end{frame}
 
-\begin{frame}{Pitfall: Hiding biases \furtherreading{Slack_2020}}
+\begin{frame}{Pitfall: Hiding biases \citebutton{Slack et al. 2020}{https://arxiv.org/abs/1911.02508}}
 
 \begin{itemize}
 	\item \textbf{Problem}: Developer could manipulate their model to hide biases 
@@ -268,7 +261,7 @@ figure/lime5
 		\begin{column}{0.5\textwidth}
 	    \centering
 	    \includegraphics[width=\textwidth]{figure/attack_biased_unbiased.jpg}
-	    \furtherreading{Sikonja_2021}
+	    \citebutton{Vres, Sikonja (2021)}{https://arxiv.org/abs/2101.11702}
 	    \end{column}
 \pause
 	    \begin{column}{0.5\textwidth}
@@ -288,7 +281,7 @@ figure/lime5
 	\end{columns}
 \end{frame}
 
-\begin{frame}[c]{Pitfall: Robustness \furtherreading{Jaakkola_2018}}
+\begin{frame}[c]{Pitfall: Robustness \citebutton{Alvarez-Melis, D., \& Jaakkola, T. 2018}{https://arxiv.org/abs/1806.08049}}
 \begin{itemize}
 	\item \textbf{Problem}: Instability of explanations 
 	\item \textbf{Observation}: Explanations of two very close points could vary greatly 
@@ -318,7 +311,7 @@ figure/lime5
 \end{columns}
 \end{frame}
 
-\begin{frame}{Pitfall: Definition of Superpixels \furtherreading{Achanta_2012}}
+\begin{frame}{Pitfall: Definition of Superpixels \citebutton{Achanta et al. 2012}{https://ieeexplore.ieee.org/document/6205760}}
 
 \begin{columns}
     

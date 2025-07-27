@@ -1,8 +1,6 @@
-\documentclass[10pt,compress,t,notes=noshow, xcolor=table]{beamer}
+\documentclass[11pt,compress,t,notes=noshow, aspectratio=169, xcolor=table]{beamer}
 
-\input{../../style/preamble}
-\input{../../latex-math/basic-math}
-\input{../../latex-math/basic-ml}
+\usepackage{../../style/lmu-lecture}
 % Defines macros and environments
 \input{../../style/common.tex}
 
@@ -24,18 +22,13 @@
 	
 	% Defines macros and environments
 	
-	\titlemeta{
-PLACEHOLDER
-}{
-Methods \& Discussion of CEs
-}{
-figure/counterfactuals_heat.png
-}{
-
+	\newcommand{\titlefigure}{figure/counterfactuals_heat.png}
+    \newcommand{\learninggoals}{
     	\item See two strategies to generate CEs
-    	\item Know problems and limitations of CEs
-}
-
+    	\item Know problems and limitations of CEs}
+	
+	\lecturechapter{Methods \& Discussion of CEs}
+	\lecture{Interpretable Machine Learning}
 	
 	% ------------------------------------------------------------------------------
 
@@ -54,7 +47,7 @@ figure/counterfactuals_heat.png
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{First Optimization Method \furtherreading{Wachter_2018}}
+\begin{frame}{First Optimization Method \citebutton{Wachter et. al (2018)}{http://dx.doi.org/10.2139/ssrn.3063289}}
 Introduced counterfactual explanations in the context of ML predictions by solving
 		\begin{equation}
 			\argmin_{\xv'} \max_{\lambda} \lambda \underbrace{(\fh(\xv') - y')^2}_{o_p(\fh(\xv'), y')} + \underbrace{\sum\nolimits_{j = 1}^p |x'_j - x_j|/MAD_j}_{o_f(\xv', \xv)}
@@ -78,7 +71,7 @@ Introduced counterfactual explanations in the context of ML predictions by solvi
 	%\footnote[frame]{Wachter S, Mittelstadt B, Russel C (2017). Counterfactual Explanations Without Opening the Black Box: Automated Decisions and the GDPR. Harvard Journal of Law \& Technology, 31 (2), 2018. \url{http://dx.doi.org/10.2139/ssrn.3063289}}
 \end{frame}
 
-\begin{frame}{Multi-Objective Counterfactual Explanations \furtherreading{Dandl_2020}}
+\begin{frame}{Multi-Objective Counterfactual Explanations \citebutton{Dandl et al. (2020)}{https://arxiv.org/abs/2004.11165}}
 	\begin{itemize}
 		\item \textbf{Multi-Objective Counterfactual Explanations (MOC):} Instead of collapsing objectives into a single objective, we could optimize all four objectives simultaneously
 	$$	\argmin_{\xv'} \left(o_p(\fh(\xv'), y'), o_f(\xv', \xv), o_s(\xv', \xv), o_4(\xv', \Xmat) \right). $$
@@ -102,7 +95,7 @@ Introduced counterfactual explanations in the context of ML predictions by solvi
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Example: Credit Data \furtherreading{Dandl_2020}}
+\begin{frame}{Example: Credit Data \citebutton{Dandl et al. (2020)}{https://arxiv.org/abs/2004.11165}}
 \begin{itemize}
 	\item<1-> We can visualize feature changes with a parallel plot and 2-dim surface plot
 		\item<1-> Parallel plot reveals that all counterfactuals had values equal to or smaller than the values of $\xv$
